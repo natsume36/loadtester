@@ -1,0 +1,37 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'row', fontFamily: 'Microsoft YaHei' }}>
+    {/* 左侧章节编号区 */}
+    <Box style={{ width: 480, height: 720, background: '#F7F9FC', flexDirection: 'column', justifyContent: 'space-between', padding: '72px 64px 88px 64px' }}>
+        <Text style={{ fontSize: 20, letterSpacing: 4, color: '#3D7BD9', fontWeight: 'bold' }}>第三章</Text>
+        <Box style={{ flexDirection: 'column' }}>
+            <Text style={{ fontSize: 236, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 0.9 }}>03</Text>
+            <Box style={{ width: 96, height: 5, background: '#3D7BD9', marginTop: 30 }} />
+        </Box>
+    </Box>
+
+    {/* 右侧标题与要点 */}
+    <Box style={{ width: 800, height: 720, padding: '0 80px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 17, letterSpacing: 4, color: '#8B97A8', fontWeight: 'bold' }}>CHAPTER 03</Text>
+        <Text style={{ fontSize: 52, fontWeight: 'bold', color: '#0E3F8C', marginTop: 20, lineHeight: 1.25 }}>基准测试与验证</Text>
+        <Box style={{ width: 80, height: 4, background: '#1E4FA8', marginTop: 26 }} />
+
+        <Box style={{ flexDirection: 'column', gap: 22, marginTop: 42 }}>
+            <Box style={{ flexDirection: 'row', gap: 16, alignItems: 'flex-start' }}>
+                <Box style={{ width: 10, height: 10, borderRadius: 5, background: '#3D7BD9', marginTop: 13 }} />
+                <Text style={{ fontSize: 23, color: '#4A5568', lineHeight: 1.5 }}>怎么测：基准直接调用 lib target 里的真实实现，不另写一份「测试版」</Text>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 16, alignItems: 'flex-start' }}>
+                <Box style={{ width: 10, height: 10, borderRadius: 5, background: '#3D7BD9', marginTop: 13 }} />
+                <Text style={{ fontSize: 23, color: '#4A5568', lineHeight: 1.5 }}>怎么读：先算理论期望，再看实测差值来自哪一处固定开销</Text>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 16, alignItems: 'flex-start' }}>
+                <Box style={{ width: 10, height: 10, borderRadius: 5, background: '#3D7BD9', marginTop: 13 }} />
+                <Text style={{ fontSize: 23, color: '#4A5568', lineHeight: 1.5 }}>怎么闭环：单测管行为正确，基准管自身开销，阈值守住流水线底线</Text>
+            </Box>
+        </Box>
+
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, marginTop: 52 }}>
+            <Box style={{ width: 28, height: 2, background: '#D6DCE5' }} />
+            <Text style={{ fontSize: 16, color: '#8B97A8' }}>本章 4 页 · P12 – P15</Text>
+        </Box>
+    </Box>
+</Slide>

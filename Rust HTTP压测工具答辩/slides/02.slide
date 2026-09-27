@@ -1,0 +1,67 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'row', fontFamily: 'Microsoft YaHei' }}>
+    {/* 左侧深蓝栏 */}
+    <Box style={{ width: 380, height: 720, background: '#0E3F8C', padding: '88px 48px', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <Box style={{ flexDirection: 'column' }}>
+            <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#FFFFFF', lineHeight: 1.4 }}>Rust HTTP 压测工具</Text>
+            <Text style={{ fontSize: 18, color: '#A8C4E8', marginTop: 12 }}>项目答辩</Text>
+            <Box style={{ width: 56, height: 3, background: '#3D7BD9', marginTop: 26 }} />
+        </Box>
+        <Box style={{ flexDirection: 'column' }}>
+            <Text style={{ fontSize: 17, color: '#A8C4E8' }}>4 章 · 18 页</Text>
+            <Text style={{ fontSize: 17, color: '#7FA3D8', marginTop: 10 }}>2026.09</Text>
+        </Box>
+    </Box>
+
+    {/* 右侧目录 */}
+    <Box style={{ width: 900, height: 720, padding: '84px 64px', flexDirection: 'column' }}>
+        <Text style={{ fontSize: 38, fontWeight: 'bold', color: '#0E3F8C' }}>目录</Text>
+        <Text style={{ fontSize: 15, letterSpacing: 5, color: '#3D7BD9', marginTop: 10 }}>CONTENTS</Text>
+        <Box style={{ width: 64, height: 4, background: '#1E4FA8', marginTop: 18 }} />
+
+        <Box style={{ flexDirection: 'column', gap: 26, marginTop: 38 }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 22 }}>
+                <Box style={{ width: 58, height: 58, borderRadius: 10, background: '#E8EFF8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>01</Text>
+                </Box>
+                <Box style={{ flexDirection: 'column', flex: 1 }}>
+                    <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#1A2230' }}>选题背景与技术选型</Text>
+                    <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 6 }}>为什么自研 · 八个依赖的取舍</Text>
+                </Box>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#3D7BD9' }}>P3–P5</Text>
+            </Box>
+
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 22 }}>
+                <Box style={{ width: 58, height: 58, borderRadius: 10, background: '#E8EFF8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>02</Text>
+                </Box>
+                <Box style={{ flexDirection: 'column', flex: 1 }}>
+                    <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#1A2230' }}>系统架构与核心实现</Text>
+                    <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 6 }}>分层解耦 · 并发模型 · 限流 · 统计</Text>
+                </Box>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#3D7BD9' }}>P6–P11</Text>
+            </Box>
+
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 22 }}>
+                <Box style={{ width: 58, height: 58, borderRadius: 10, background: '#E8EFF8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>03</Text>
+                </Box>
+                <Box style={{ flexDirection: 'column', flex: 1 }}>
+                    <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#1A2230' }}>基准测试与验证</Text>
+                    <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 6 }}>criterion 微基准 · 25 个单测</Text>
+                </Box>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#3D7BD9' }}>P12–P15</Text>
+            </Box>
+
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 22 }}>
+                <Box style={{ width: 58, height: 58, borderRadius: 10, background: '#E8EFF8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E4FA8' }}>04</Text>
+                </Box>
+                <Box style={{ flexDirection: 'column', flex: 1 }}>
+                    <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#1A2230' }}>总结与展望</Text>
+                    <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 6 }}>六周交付 · 四人分工 · 后续方向</Text>
+                </Box>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#3D7BD9' }}>P16–P18</Text>
+            </Box>
+        </Box>
+    </Box>
+</Slide>

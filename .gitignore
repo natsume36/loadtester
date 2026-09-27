@@ -1,0 +1,14 @@
+/target
+Cargo.lock
+*.log
+
+# 第三方压测工具（二进制，不入库）
+/bench_tools/
+
+# 助手工作数据与文档生成中间产物
+/.workbuddy/
+/output/
+
+# 系统文件
+Thumbs.db
+.DS_Store

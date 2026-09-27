@@ -1,0 +1,91 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>纳秒级延迟分布怎么算出来</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>02 / 系统架构与核心实现</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'row', gap: 26 }}>
+
+        {/* 左：直方图分桶原理 */}
+        <Box style={{ width: 700, height: 532, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <FAIcon name='chart-bar' style={{ fill: '#1E4FA8', width: 22, height: 22 }} />
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>为什么按数量级分桶</Text>
+            </Box>
+            <svg width={660} height={430} viewBox='0 0 660 430' style={{ marginTop: 12 }}>
+                <text x='30' y='20' fontSize='18' fill='#8B97A8'>延迟分布：真正影响体验的是右侧长尾</text>
+
+                <text x='218' y='28' textAnchor='middle' fontSize='17' fill='#8B97A8'>p50</text>
+                <text x='482' y='28' textAnchor='middle' fontSize='17' fill='#D9534F'>p99</text>
+
+                <rect x='40' y='138' width='20' height='12' rx='2' fill='#DCE9F8' />
+                <rect x='64' y='130' width='20' height='20' rx='2' fill='#DCE9F8' />
+                <rect x='88' y='116' width='20' height='34' rx='2' fill='#DCE9F8' />
+                <rect x='112' y='98' width='20' height='52' rx='2' fill='#DCE9F8' />
+                <rect x='136' y='76' width='20' height='74' rx='2' fill='#DCE9F8' />
+                <rect x='160' y='58' width='20' height='92' rx='2' fill='#DCE9F8' />
+                <rect x='184' y='46' width='20' height='104' rx='2' fill='#DCE9F8' />
+                <rect x='208' y='42' width='20' height='108' rx='2' fill='#DCE9F8' />
+                <rect x='232' y='46' width='20' height='104' rx='2' fill='#DCE9F8' />
+                <rect x='256' y='58' width='20' height='92' rx='2' fill='#C9DDF6' />
+                <rect x='280' y='74' width='20' height='76' rx='2' fill='#C9DDF6' />
+                <rect x='304' y='88' width='20' height='62' rx='2' fill='#C9DDF6' />
+                <rect x='328' y='100' width='20' height='50' rx='2' fill='#C9DDF6' />
+                <rect x='352' y='108' width='20' height='42' rx='2' fill='#C9DDF6' />
+                <rect x='376' y='114' width='20' height='36' rx='2' fill='#C9DDF6' />
+                <rect x='400' y='118' width='20' height='32' rx='2' fill='#C9DDF6' />
+                <rect x='424' y='122' width='20' height='28' rx='2' fill='#C9DDF6' />
+                <rect x='448' y='126' width='20' height='24' rx='2' fill='#C9DDF6' />
+                <rect x='472' y='130' width='20' height='20' rx='2' fill='#3D7BD9' />
+                <rect x='496' y='134' width='20' height='16' rx='2' fill='#3D7BD9' />
+                <rect x='520' y='138' width='20' height='12' rx='2' fill='#3D7BD9' />
+                <rect x='544' y='141' width='20' height='9' rx='2' fill='#3D7BD9' />
+                <rect x='568' y='145' width='20' height='5' rx='2' fill='#3D7BD9' />
+                <rect x='592' y='147' width='20' height='3' rx='2' fill='#3D7BD9' />
+
+                <line x1='30' y1='150' x2='630' y2='150' stroke='#D6DCE5' strokeWidth='1' />
+                <line x1='218' y1='34' x2='218' y2='150' stroke='#8B97A8' strokeWidth='1' strokeDasharray='4 4' />
+                <line x1='482' y1='34' x2='482' y2='150' stroke='#D9534F' strokeWidth='1' strokeDasharray='4 4' />
+
+                <text x='30' y='178' fontSize='17' fill='#4A5568'>平均值只有一个数，长尾会被它吞掉；分位数才描述得了「最慢的那 1%」</text>
+
+                <text x='30' y='216' fontSize='18' fill='#8B97A8'>HdrHistogram：桶宽按数量级递增，误差可控、内存有界</text>
+
+                <rect x='30' y='330' width='32' height='70' rx='3' fill='#DCE9F8' />
+                <rect x='62' y='284' width='40' height='116' rx='3' fill='#DCE9F8' />
+                <rect x='102' y='252' width='50' height='148' rx='3' fill='#C9DDF6' />
+                <rect x='152' y='268' width='62' height='132' rx='3' fill='#C9DDF6' />
+                <rect x='214' y='306' width='76' height='94' rx='3' fill='#C9DDF6' />
+                <rect x='290' y='340' width='92' height='60' rx='3' fill='#C9DDF6' />
+                <rect x='382' y='366' width='112' height='34' rx='3' fill='#3D7BD9' />
+                <rect x='494' y='382' width='136' height='18' rx='3' fill='#3D7BD9' />
+
+                <line x1='30' y1='400' x2='630' y2='400' stroke='#D6DCE5' strokeWidth='1' />
+                <text x='330' y='424' textAnchor='middle' fontSize='17' fill='#8B97A8'>桶宽按数量级递增 —— 相对误差恒定，总桶数很小</text>
+            </svg>
+        </Box>
+
+        {/* 右：设计说明 */}
+        <Box style={{ width: 474, height: 532, flexDirection: 'column', gap: 20 }}>
+            <Box style={{ width: 474, height: 300, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>为什么放弃平均值</Text>
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 14, lineHeight: 1.55 }}>压测最该盯的是尾部延迟，而平均值会把少量极慢请求稀释掉。用平均值做验收，等于默认「慢的那部分不重要」。</Text>
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 14, lineHeight: 1.55 }}>5 档分位数 p50 / p90 / p95 / p99 / p99.9 直接由直方图取值，不需要保存并排序全部原始样本。</Text>
+            </Box>
+
+            <Box style={{ width: 474, height: 212, background: '#F0F5FC', border: '1px solid #D6E4F5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E4FA8' }}>热路径无锁，冷路径才加锁</Text>
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 12, lineHeight: 1.55 }}>总量、错误数与字节数走 AtomicU64 无锁累加；直方图写入、状态码分布与样本缓冲才用 Mutex。</Text>
+                <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 10 }}>样本缓冲上限 20 万条，避免无界增长吃光内存</Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>10 / 18</Text>
+    </Box>
+</Slide>

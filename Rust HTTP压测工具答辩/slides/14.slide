@@ -1,0 +1,100 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>限流精度：理论周期 vs 实测中位数</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>03 / 基准测试与验证</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'column' }}>
+
+        {/* L0 引导问题条 */}
+        <Box style={{ width: 1200, height: 42, background: '#F0F5FC', borderLeft: '5px solid #1E4FA8', padding: '0 18px', flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={{ fontSize: 20, color: '#1E4FA8' }}>引导问题：令牌桶放行一次，实测耗时究竟偏离理论周期多少？</Text>
+        </Box>
+
+        {/* 主图区：数据表 + 偏差柱状图 */}
+        <Box style={{ width: 1200, height: 276, marginTop: 12, flexDirection: 'row', gap: 24 }}>
+            <Table
+                style={{ width: 560, height: 276 }}
+                defaultTextStyle={{ fontSize: 17, textAlign: 'center', color: '#1A2230' }}
+                defaultCellStyle={{
+                    border: {
+                        left: { width: 1, color: '#E5E7EB' },
+                        right: { width: 1, color: '#E5E7EB' },
+                        top: { width: 1, color: '#E5E7EB' },
+                        bottom: { width: 1, color: '#E5E7EB' },
+                    },
+                }}
+                cells={[
+                    [
+                        { text: 'QPS', textStyle: { bold: true, color: '#FFFFFF', fontSize: 18 }, cellStyle: { background: { color: '#0E3F8C' } } },
+                        { text: '理论周期', textStyle: { bold: true, color: '#FFFFFF', fontSize: 18 }, cellStyle: { background: { color: '#0E3F8C' } } },
+                        { text: '实测中位数', textStyle: { bold: true, color: '#FFFFFF', fontSize: 18 }, cellStyle: { background: { color: '#0E3F8C' } } },
+                        { text: '偏差', textStyle: { bold: true, color: '#FFFFFF', fontSize: 18 }, cellStyle: { background: { color: '#0E3F8C' } } },
+                    ],
+                    ['100', '10.000 ms', '12.300 ms', { text: '+2.30 ms', textStyle: { color: '#D9534F', bold: true } }],
+                    [
+                        { text: '1,000', cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: '1.000 ms', cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: '1.119 ms', cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: '+0.119 ms', textStyle: { color: '#D9534F', bold: true }, cellStyle: { background: { color: '#F7F9FC' } } },
+                    ],
+                    ['10,000', '100.0 µs', '111.8 µs', { text: '+11.8 µs', textStyle: { color: '#D9534F', bold: true } }],
+                    [
+                        { text: '100,000', cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: '10.00 µs', cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: '11.19 µs', cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: '+1.19 µs', textStyle: { color: '#D9534F', bold: true }, cellStyle: { background: { color: '#F7F9FC' } } },
+                    ],
+                ]}
+            />
+
+            <Chart
+                style={{ width: 616, height: 276 }}
+                chartType='barChart'
+                barDirection='column'
+                title='偏差占比（实测中位数 / 理论周期 − 1）'
+                titleColor='#0E3F8C'
+                showLegend={false}
+                showDataLabels={true}
+                dataLabelColor='#1E4FA8'
+                axisColor='#8B97A8'
+                colors={['#3D7BD9']}
+                background='#FFFFFF'
+                data={[
+                    ['QPS', '偏差占比 %'],
+                    ['100', 23.0],
+                    ['1,000', 11.9],
+                    ['10,000', 11.8],
+                    ['100,000', 11.9],
+                ]}
+            />
+        </Box>
+
+        {/* 洞察区 */}
+        <Box style={{ width: 1200, height: 180, marginTop: 24, flexDirection: 'row', gap: 24 }}>
+            <Box style={{ width: 776, height: 180, background: '#F0F5FC', border: '1px solid #D6E4F5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E4FA8' }}>实测耗时 = 理论周期 + 固定开销</Text>
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 10, lineHeight: 1.55 }}>固定开销来自三处：Mutex 临界区约 1.1 µs、tokio::time::sleep 的调度精度损失、以及刻意保留的 1 ms 余量补偿。QPS 越高、理论周期越短，固定开销的占比就越显眼。</Text>
+            </Box>
+
+            <Box style={{ width: 400, height: 180, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 17, color: '#8B97A8' }}>QPS ≥ 1000 时偏差占比</Text>
+                <Box style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 6, marginTop: 8 }}>
+                    <Text style={{ fontSize: 62, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1 }}>11.9</Text>
+                    <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#3D7BD9', marginBottom: 6 }}>%</Text>
+                </Box>
+                <Box style={{ marginTop: 12, padding: '6px 14px', background: '#E8EFF8', borderRadius: 16, alignSelf: 'flex-start' }}>
+                    <Text style={{ fontSize: 16, color: '#1E4FA8' }}>区间 11.8% – 11.9%，小于 12%</Text>
+                </Box>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>14 / 18</Text>
+    </Box>
+</Slide>

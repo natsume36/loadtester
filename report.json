@@ -1,0 +1,269 @@
+{
+  "samples": [
+    {
+      "elapsed_ms": 6,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 6,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 6,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 7,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 8,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 3,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 1,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 1,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 1,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 2,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    },
+    {
+      "elapsed_ms": 22,
+      "http_version": "HTTP/1.0",
+      "status_code": 200
+    }
+  ],
+  "summary": {
+    "error_rate": 0.0,
+    "errors": 0,
+    "latency_ms": {
+      "max": 22,
+      "mean": 2.82,
+      "min": 1,
+      "p50": 2,
+      "p95": 7,
+      "p99": 22
+    },
+    "qps": 1292.8214794531884,
+    "total": 50
+  },
+  "top_errors": []
+}

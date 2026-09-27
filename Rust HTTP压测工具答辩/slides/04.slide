@@ -1,0 +1,103 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>为什么要自己造一把尺子</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>01 / 选题背景与技术选型</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'column' }}>
+        <Box style={{ flexDirection: 'row', gap: 28, height: 430 }}>
+
+            {/* 左：65% 对照流程 */}
+            <Box style={{ width: 760, height: 430, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 12, padding: 22, flexDirection: 'column' }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <FAIcon name='times-circle' style={{ fill: '#D9534F', width: 22, height: 22 }} />
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#8B97A8' }}>现状：工具箱是割裂的</Text>
+                </Box>
+
+                <Box style={{ flexDirection: 'row', gap: 16, marginTop: 14 }}>
+                    <Box style={{ flex: 1, padding: '14px 18px', background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 10, flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1A2230' }}>调试</Text>
+                        <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 5 }}>curl / Postman</Text>
+                    </Box>
+                    <Box style={{ flex: 1, padding: '14px 18px', background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 10, flexDirection: 'column' }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1A2230' }}>压测</Text>
+                        <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 5 }}>wrk / ab / JMeter</Text>
+                    </Box>
+                </Box>
+
+                <Box style={{ flexDirection: 'column', alignItems: 'center', marginTop: 10 }}>
+                    <Box style={{ width: 2, height: 16, background: '#D6DCE5' }} />
+                    <Box style={{ padding: '9px 20px', background: '#FDF0EF', border: '1px solid #E8B4B1', borderRadius: 18 }}>
+                        <Text style={{ fontSize: 18, color: '#D9534F' }}>两套指标口径 · 数据对不上 · 上下文来回切换</Text>
+                    </Box>
+                </Box>
+
+                <Box style={{ width: '100%', height: 1, background: '#D6DCE5', marginTop: 20, marginBottom: 20 }} />
+
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <FAIcon name='check-circle' style={{ fill: '#1E4FA8', width: 22, height: 22 }} />
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E4FA8' }}>自研：收敛成一条链路</Text>
+                </Box>
+
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 14 }}>
+                    <Box style={{ flex: 1, padding: '13px 0', background: '#E8EFF8', borderRadius: 8, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 17, color: '#1E4FA8' }}>请求发生</Text>
+                    </Box>
+                    <FAIcon name='arrow-right' style={{ fill: '#3D7BD9', width: 14, height: 14 }} />
+                    <Box style={{ flex: 1, padding: '13px 0', background: '#E8EFF8', borderRadius: 8, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 17, color: '#1E4FA8' }}>QPS 限流</Text>
+                    </Box>
+                    <FAIcon name='arrow-right' style={{ fill: '#3D7BD9', width: 14, height: 14 }} />
+                    <Box style={{ flex: 1, padding: '13px 0', background: '#DCE9F8', borderRadius: 8, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 17, color: '#1E4FA8' }}>统计聚合</Text>
+                    </Box>
+                    <FAIcon name='arrow-right' style={{ fill: '#3D7BD9', width: 14, height: 14 }} />
+                    <Box style={{ flex: 1, padding: '13px 0', background: '#E8EFF8', borderRadius: 8, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 17, color: '#1E4FA8' }}>导出报告</Text>
+                    </Box>
+                </Box>
+
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 14 }}>单一口径 · 结果可复现 · 可直接进 CI 流水线</Text>
+            </Box>
+
+            {/* 右：35% 问题与定位 */}
+            <Box style={{ width: 412, height: 430, flexDirection: 'column', gap: 20 }}>
+                <Box style={{ flex: 1, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1A2230' }}>割裂带来的三个代价</Text>
+                    <Box style={{ flexDirection: 'column', gap: 10, marginTop: 14 }}>
+                        <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                            <FAIcon name='times' style={{ fill: '#D9534F', width: 14, height: 14 }} />
+                            <Text style={{ fontSize: 18, color: '#4A5568', lineHeight: 1.4 }}>调试与压测之间反复切换，上下文成本高</Text>
+                        </Box>
+                        <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                            <FAIcon name='times' style={{ fill: '#D9534F', width: 14, height: 14 }} />
+                            <Text style={{ fontSize: 18, color: '#4A5568', lineHeight: 1.4 }}>指标口径不一致，两次结果不可比</Text>
+                        </Box>
+                        <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                            <FAIcon name='times' style={{ fill: '#D9534F', width: 14, height: 14 }} />
+                            <Text style={{ fontSize: 18, color: '#4A5568', lineHeight: 1.4 }}>工具自身开销不可见，读数可信度存疑</Text>
+                        </Box>
+                    </Box>
+                </Box>
+
+                <Box style={{ flex: 1, background: '#0E3F8C', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 18, color: '#A8C4E8' }}>本项目定位</Text>
+                    <Text style={{ fontSize: 21, color: '#FFFFFF', marginTop: 12, lineHeight: 1.55 }}>把请求发生、限流、统计、导出收敛成一条链路，用一套口径给出可复现的性能读数</Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 底部结论条 */}
+        <Box style={{ width: 1200, height: 78, marginTop: 24, background: '#F0F5FC', borderLeft: '5px solid #1E4FA8', padding: '0 24px', flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={{ fontSize: 21, color: '#1E4FA8' }}>自研的价值不在于再造一个 wrk，而在于让「施加负载 → 读取指标 → 做出判断」落在同一套口径上</Text>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>04 / 18</Text>
+    </Box>
+</Slide>

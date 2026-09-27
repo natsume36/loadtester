@@ -1,0 +1,37 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'row', fontFamily: 'Microsoft YaHei' }}>
+    {/* 左侧章节编号区 */}
+    <Box style={{ width: 480, height: 720, background: '#F7F9FC', flexDirection: 'column', justifyContent: 'space-between', padding: '72px 64px 88px 64px' }}>
+        <Text style={{ fontSize: 20, letterSpacing: 4, color: '#3D7BD9', fontWeight: 'bold' }}>第一章</Text>
+        <Box style={{ flexDirection: 'column' }}>
+            <Text style={{ fontSize: 236, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 0.9 }}>01</Text>
+            <Box style={{ width: 96, height: 5, background: '#3D7BD9', marginTop: 30 }} />
+        </Box>
+    </Box>
+
+    {/* 右侧标题与要点 */}
+    <Box style={{ width: 800, height: 720, padding: '0 80px', flexDirection: 'column', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 17, letterSpacing: 4, color: '#8B97A8', fontWeight: 'bold' }}>CHAPTER 01</Text>
+        <Text style={{ fontSize: 52, fontWeight: 'bold', color: '#0E3F8C', marginTop: 20, lineHeight: 1.25 }}>选题背景与技术选型</Text>
+        <Box style={{ width: 80, height: 4, background: '#1E4FA8', marginTop: 26 }} />
+
+        <Box style={{ flexDirection: 'column', gap: 22, marginTop: 42 }}>
+            <Box style={{ flexDirection: 'row', gap: 16, alignItems: 'flex-start' }}>
+                <Box style={{ width: 10, height: 10, borderRadius: 5, background: '#3D7BD9', marginTop: 13 }} />
+                <Text style={{ fontSize: 23, color: '#4A5568', lineHeight: 1.5 }}>自研的价值：把请求发生、限流、统计、导出收敛到一条链路</Text>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 16, alignItems: 'flex-start' }}>
+                <Box style={{ width: 10, height: 10, borderRadius: 5, background: '#3D7BD9', marginTop: 13 }} />
+                <Text style={{ fontSize: 23, color: '#4A5568', lineHeight: 1.5 }}>选型的依据：八个依赖，每一个都要说清为什么是它</Text>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 16, alignItems: 'flex-start' }}>
+                <Box style={{ width: 10, height: 10, borderRadius: 5, background: '#3D7BD9', marginTop: 13 }} />
+                <Text style={{ fontSize: 23, color: '#4A5568', lineHeight: 1.5 }}>交付的形态：一个可直接替代 wrk / ab 的命令行工具</Text>
+            </Box>
+        </Box>
+
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 14, marginTop: 52 }}>
+            <Box style={{ width: 28, height: 2, background: '#D6DCE5' }} />
+            <Text style={{ fontSize: 16, color: '#8B97A8' }}>本章 3 页 · P3 – P5</Text>
+        </Box>
+    </Box>
+</Slide>

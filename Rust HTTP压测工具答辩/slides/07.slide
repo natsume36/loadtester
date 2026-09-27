@@ -1,0 +1,109 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>七层职责，一条单向数据流</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>02 / 系统架构与核心实现</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'column' }}>
+
+        {/* 上：分层架构主视觉 */}
+        <Box style={{ width: 1200, height: 84, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+            <Box style={{ flex: 1, height: 76, background: '#E8EFF8', border: '1px solid #C9DDF6', borderRadius: 8, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#1E4FA8' }}>命令行入口</Text>
+                <Text style={{ fontSize: 14, color: '#8B97A8', marginTop: 4 }}>cli.rs</Text>
+            </Box>
+            <FAIcon name='chevron-right' style={{ fill: '#3D7BD9', width: 16, height: 16 }} />
+            <Box style={{ flex: 1, height: 76, background: '#E8EFF8', border: '1px solid #C9DDF6', borderRadius: 8, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#1E4FA8' }}>配置合并</Text>
+                <Text style={{ fontSize: 14, color: '#8B97A8', marginTop: 4 }}>config.rs</Text>
+            </Box>
+            <FAIcon name='chevron-right' style={{ fill: '#3D7BD9', width: 16, height: 16 }} />
+            <Box style={{ flex: 1, height: 76, background: '#E8EFF8', border: '1px solid #C9DDF6', borderRadius: 8, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#1E4FA8' }}>控制编排</Text>
+                <Text style={{ fontSize: 14, color: '#8B97A8', marginTop: 4 }}>main.rs</Text>
+            </Box>
+            <FAIcon name='chevron-right' style={{ fill: '#3D7BD9', width: 16, height: 16 }} />
+            <Box style={{ flex: 1, height: 76, background: '#DCE9F8', border: '1px solid #B8D2F2', borderRadius: 8, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#1E4FA8' }}>并发调度</Text>
+                <Text style={{ fontSize: 14, color: '#8B97A8', marginTop: 4 }}>worker.rs</Text>
+            </Box>
+            <FAIcon name='chevron-right' style={{ fill: '#3D7BD9', width: 16, height: 16 }} />
+            <Box style={{ flex: 1, height: 76, background: '#E8EFF8', border: '1px solid #C9DDF6', borderRadius: 8, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#1E4FA8' }}>HTTP 客户端</Text>
+                <Text style={{ fontSize: 14, color: '#8B97A8', marginTop: 4 }}>http_client.rs</Text>
+            </Box>
+            <FAIcon name='chevron-right' style={{ fill: '#3D7BD9', width: 16, height: 16 }} />
+            <Box style={{ flex: 1, height: 76, background: '#E8EFF8', border: '1px solid #C9DDF6', borderRadius: 8, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#1E4FA8' }}>统计聚合</Text>
+                <Text style={{ fontSize: 14, color: '#8B97A8', marginTop: 4 }}>stats.rs</Text>
+            </Box>
+            <FAIcon name='chevron-right' style={{ fill: '#3D7BD9', width: 16, height: 16 }} />
+            <Box style={{ flex: 1, height: 76, background: '#E8EFF8', border: '1px solid #C9DDF6', borderRadius: 8, justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#1E4FA8' }}>输出导出</Text>
+                <Text style={{ fontSize: 14, color: '#8B97A8', marginTop: 4 }}>reporter.rs</Text>
+            </Box>
+        </Box>
+
+        {/* 分层说明条 */}
+        <Box style={{ width: 1200, height: 42, marginTop: 18, background: '#F7F9FC', borderRadius: 8, padding: '0 18px', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <FAIcon name='info-circle' style={{ fill: '#3D7BD9', width: 18, height: 18 }} />
+            <Text style={{ fontSize: 18, color: '#4A5568' }}>上层只依赖下层的公开接口；lib.rs 提供 lib target，让 criterion bench 与 bin 共享同一份实现</Text>
+        </Box>
+
+        {/* 旁路组件 */}
+        <Box style={{ width: 1200, height: 84, marginTop: 20, flexDirection: 'row', gap: 20 }}>
+            <Box style={{ width: 590, height: 84, background: '#F0F5FC', borderRadius: 8, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                <FAIcon name='file-text' style={{ fill: '#1E4FA8', width: 24, height: 24 }} />
+                <Box style={{ flexDirection: 'column', flex: 1 }}>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1E4FA8' }}>数据集驱动 · dataset.rs</Text>
+                    <Text style={{ fontSize: 17, color: '#4A5568', marginTop: 5 }}>每次请求随机取一条记录，覆盖 method / url / headers / body</Text>
+                </Box>
+            </Box>
+            <Box style={{ width: 590, height: 84, background: '#F0F5FC', borderRadius: 8, padding: '12px 18px', flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+                <FAIcon name='clock' style={{ fill: '#1E4FA8', width: 24, height: 24 }} />
+                <Box style={{ flexDirection: 'column', flex: 1 }}>
+                    <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1E4FA8' }}>令牌桶限流 · worker.rs</Text>
+                    <Text style={{ fontSize: 17, color: '#4A5568', marginTop: 5 }}>派发前先 acquire() 取令牌，把实际 QPS 压在设定值上</Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：三张职责卡 */}
+        <Box style={{ width: 1200, height: 240, marginTop: 24, flexDirection: 'row', gap: 21 }}>
+            <Box style={{ flex: 1, height: 240, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>输入：参数与配置</Text>
+                <Box style={{ width: 40, height: 3, background: '#3D7BD9', marginTop: 12 }} />
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 14, lineHeight: 1.55 }}>clap derive 声明全部参数；YAML 与 CLI 按「显式优先」合并，最后收敛成唯一的运行时 Config</Text>
+                <Box style={{ marginTop: 14, padding: '7px 14px', background: '#E8EFF8', borderRadius: 16, alignSelf: 'flex-start' }}>
+                    <Text style={{ fontSize: 16, color: '#1E4FA8' }}>三层优先级 · 20+ 可配项</Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, height: 240, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>执行：并发与协议</Text>
+                <Box style={{ width: 40, height: 3, background: '#3D7BD9', marginTop: 12 }} />
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 14, lineHeight: 1.55 }}>信号量卡住同时在途请求数，JoinSet 统一排空；reqwest 屏蔽 HTTP/1.1 与 HTTP/2、TLS、连接池差异</Text>
+                <Box style={{ marginTop: 14, padding: '7px 14px', background: '#E8EFF8', borderRadius: 16, alignSelf: 'flex-start' }}>
+                    <Text style={{ fontSize: 16, color: '#1E4FA8' }}>在途请求数 ≤ --concurrency</Text>
+                </Box>
+            </Box>
+
+            <Box style={{ flex: 1, height: 240, background: '#F7F9FC', border: '1px solid #C9DDF6', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>观测：统计与导出</Text>
+                <Box style={{ width: 40, height: 3, background: '#3D7BD9', marginTop: 12 }} />
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 14, lineHeight: 1.55 }}>HdrHistogram 记录纳秒延迟，原子计数累加总量；console / JSON / CSV 三种出口共用同一份 Summary</Text>
+                <Box style={{ marginTop: 14, padding: '7px 14px', background: '#DCE9F8', borderRadius: 16, alignSelf: 'flex-start' }}>
+                    <Text style={{ fontSize: 16, color: '#1E4FA8' }}>p50 – p99.9 · 20 万样本缓冲</Text>
+                </Box>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>07 / 18</Text>
+    </Box>
+</Slide>

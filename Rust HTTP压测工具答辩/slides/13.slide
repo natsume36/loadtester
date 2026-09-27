@@ -1,0 +1,68 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>记录一条样本 49.33 纳秒</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>03 / 基准测试与验证</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'row', gap: 30 }}>
+
+        {/* 左：巨型数字群（L1 主视觉） */}
+        <Box style={{ width: 700, height: 532, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 12, padding: 28, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 18, letterSpacing: 2, color: '#8B97A8', fontWeight: 'bold' }}>CRITERION 微基准 · 中位数</Text>
+
+            <Box style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, marginTop: 20 }}>
+                <Text style={{ fontSize: 96, fontWeight: 'bold', color: '#0E3F8C', lineHeight: 1 }}>49.33</Text>
+                <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#3D7BD9', marginBottom: 10 }}>ns</Text>
+            </Box>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E4FA8', marginTop: 10 }}>stats_record_one_sample</Text>
+            <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 6 }}>HdrHistogram 写入 + 原子计数 + push_sample，三件事打包完成</Text>
+
+            <Box style={{ width: '100%', height: 1, background: '#D6DCE5', marginTop: 20, marginBottom: 20 }} />
+
+            <Box style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10 }}>
+                <Text style={{ fontSize: 96, fontWeight: 'bold', color: '#1E4FA8', lineHeight: 1 }}>16.27</Text>
+                <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#3D7BD9', marginBottom: 10 }}>µs</Text>
+            </Box>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E4FA8', marginTop: 10 }}>stats_summarize_100k_samples</Text>
+            <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 6 }}>10 万样本取 5 档分位数 + 克隆状态码分布</Text>
+        </Box>
+
+        {/* 右：解读 */}
+        <Box style={{ width: 470, height: 532, flexDirection: 'column' }}>
+
+            {/* 对比锚点 */}
+            <Box style={{ width: 470, height: 176, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0E3F8C' }}>与标称值的差距</Text>
+                <svg width={430} height={94} viewBox='0 0 430 94' style={{ marginTop: 10 }}>
+                    <text x='0' y='14' fontSize='16' fill='#8B97A8'>HdrHistogram 标称单次写入</text>
+                    <rect x='0' y='24' width='42' height='20' rx='3' fill='#C9DDF6' />
+                    <text x='52' y='40' fontSize='16' fill='#8B97A8'>3 – 6 ns</text>
+
+                    <text x='0' y='62' fontSize='16' fill='#1E4FA8'>本项目完整 record 链路</text>
+                    <rect x='0' y='72' width='300' height='20' rx='3' fill='#1E4FA8' />
+                    <text x='310' y='88' fontSize='16' fill='#1E4FA8'>49.33 ns</text>
+                </svg>
+            </Box>
+
+            {/* 结论 */}
+            <Box style={{ width: 470, height: 156, marginTop: 20, background: '#0E3F8C', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 17, color: '#A8C4E8' }}>结论</Text>
+                <Text style={{ fontSize: 20, color: '#FFFFFF', marginTop: 10, lineHeight: 1.5 }}>完整链路仍在百纳秒量级，可以放心把它放在每个请求的返回路径上</Text>
+            </Box>
+
+            {/* 洞察 */}
+            <Box style={{ width: 470, height: 160, marginTop: 20, background: '#F0F5FC', border: '1px solid #D6E4F5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E4FA8' }}>为什么这两个数重要</Text>
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 10, lineHeight: 1.55 }}>统计引擎跑在压测工具自己身上。它的开销若与被测服务的延迟同量级，读数就不可信；16.27 µs 相对毫秒级请求延迟可以忽略。</Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>13 / 18</Text>
+    </Box>
+</Slide>

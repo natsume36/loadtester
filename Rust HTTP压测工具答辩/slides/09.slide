@@ -1,0 +1,92 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>零启动突发的令牌桶</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>02 / 系统架构与核心实现</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'row', gap: 26 }}>
+
+        {/* 左：算法流程主视觉 */}
+        <Box style={{ width: 690, height: 532, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <FAIcon name='cog' style={{ fill: '#1E4FA8', width: 22, height: 22 }} />
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>acquire() 的一次循环</Text>
+            </Box>
+            <svg width={650} height={400} viewBox='0 0 650 400' style={{ marginTop: 12 }}>
+                <rect x='40' y='8' width='270' height='54' rx='8' fill='#E8EFF8' stroke='#C9DDF6' strokeWidth='1' />
+                <text x='175' y='42' textAnchor='middle' fontSize='18' fill='#1E4FA8'>① 加锁并 refill()</text>
+
+                <line x1='175' y1='62' x2='175' y2='92' stroke='#3D7BD9' strokeWidth='2' />
+                <polygon points='175,96 170,86 180,86' fill='#3D7BD9' />
+
+                <rect x='40' y='96' width='270' height='54' rx='8' fill='#E8EFF8' stroke='#C9DDF6' strokeWidth='1' />
+                <text x='175' y='130' textAnchor='middle' fontSize='18' fill='#1E4FA8'>② tokens ≥ 1 ？</text>
+
+                <line x1='310' y1='123' x2='366' y2='123' stroke='#3D7BD9' strokeWidth='2' />
+                <polygon points='370,123 360,118 360,128' fill='#3D7BD9' />
+                <text x='338' y='113' textAnchor='middle' fontSize='16' fill='#3D7BD9'>是</text>
+
+                <rect x='370' y='96' width='250' height='54' rx='8' fill='#DCE9F8' stroke='#B8D2F2' strokeWidth='1' />
+                <text x='495' y='130' textAnchor='middle' fontSize='18' fill='#1E4FA8'>扣 1 个令牌 · 立即放行</text>
+
+                <line x1='175' y1='150' x2='175' y2='178' stroke='#D9534F' strokeWidth='2' />
+                <polygon points='175,182 170,172 180,172' fill='#D9534F' />
+                <text x='190' y='172' fontSize='16' fill='#D9534F'>否</text>
+
+                <rect x='40' y='184' width='270' height='76' rx='8' fill='#FDF0EF' stroke='#E8B4B1' strokeWidth='1' />
+                <text x='175' y='216' textAnchor='middle' fontSize='18' fill='#D9534F'>需等待 (1 − tokens) / rate</text>
+                <text x='175' y='244' textAnchor='middle' fontSize='18' fill='#D9534F'>再补 1 ms 余量</text>
+
+                <line x1='175' y1='260' x2='175' y2='290' stroke='#3D7BD9' strokeWidth='2' />
+                <polygon points='175,294 170,284 180,284' fill='#3D7BD9' />
+
+                <rect x='40' y='294' width='270' height='54' rx='8' fill='#E8EFF8' stroke='#C9DDF6' strokeWidth='1' />
+                <text x='175' y='328' textAnchor='middle' fontSize='18' fill='#1E4FA8'>④ 释放锁 · sleep 后重试</text>
+
+                <path d='M175 348 L175 378 L20 378 L20 35 L36 35' fill='none' stroke='#3D7BD9' strokeWidth='2' />
+                <polygon points='40,35 30,30 30,40' fill='#3D7BD9' />
+
+                <rect x='370' y='184' width='250' height='76' rx='8' fill='#F0F5FC' stroke='#D6E4F5' strokeWidth='1' />
+                <text x='495' y='216' textAnchor='middle' fontSize='18' fill='#1E4FA8'>sleep 放在临界区外</text>
+                <text x='495' y='244' textAnchor='middle' fontSize='18' fill='#4A5568'>async 任务不抱着锁睡</text>
+
+                <rect x='370' y='294' width='250' height='54' rx='8' fill='#F0F5FC' stroke='#D6E4F5' strokeWidth='1' />
+                <text x='495' y='328' textAnchor='middle' fontSize='18' fill='#4A5568'>循环直至拿到令牌</text>
+            </svg>
+        </Box>
+
+        {/* 右：要点卡 */}
+        <Box style={{ width: 484, height: 532, flexDirection: 'column', gap: 20 }}>
+            <Box style={{ width: 484, height: 300, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>三处刻意的设计</Text>
+                <Box style={{ flexDirection: 'column', gap: 12, marginTop: 14 }}>
+                    <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                        <FAIcon name='check' style={{ fill: '#1E4FA8', width: 15, height: 15 }} />
+                        <Text style={{ fontSize: 17, color: '#4A5568', lineHeight: 1.5 }}>初始令牌为 0 —— 开机若给满 rate 个令牌，启动瞬间就是一次突发，平均速率失真</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                        <FAIcon name='check' style={{ fill: '#1E4FA8', width: 15, height: 15 }} />
+                        <Text style={{ fontSize: 17, color: '#4A5568', lineHeight: 1.5 }}>容量等于速率 —— 空闲后最多补回 1 秒的量，既不打爆目标也不让速率塌陷</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                        <FAIcon name='check' style={{ fill: '#1E4FA8', width: 15, height: 15 }} />
+                        <Text style={{ fontSize: 17, color: '#4A5568', lineHeight: 1.5 }}>锁内只做算术 —— refill 与扣减都是纯计算，等待被完整移到锁外</Text>
+                    </Box>
+                </Box>
+            </Box>
+
+            <Box style={{ width: 484, height: 212, background: '#F0F5FC', border: '1px solid #D6E4F5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1E4FA8' }}>为什么不用固定 sleep(1 / rate)</Text>
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 12, lineHeight: 1.55 }}>固定间隔会把误差一笔笔累加，也无法吸收空闲后的突发；按 elapsed × rate 补币，误差始终被限制在一次补币之内。</Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>09 / 18</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,138 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>六周交付与四人分工</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>04 / 总结与展望</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'column' }}>
+
+        {/* 上：六周路线时间轴 */}
+        <Box style={{ width: 1200, height: 306, flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', height: 34 }}>
+                <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <FAIcon name='check-circle' style={{ fill: '#1E4FA8', width: 22, height: 22 }} />
+                    <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>六周路线 · 全部打勾</Text>
+                </Box>
+                <Text style={{ fontSize: 17, color: '#8B97A8' }}>另含三项增强</Text>
+            </Box>
+
+            <Box style={{ width: 1200, height: 176, marginTop: 16, flexDirection: 'row', gap: 12 }}>
+                <Box style={{ width: 190, height: 176, flexDirection: 'column' }}>
+                    <Box style={{ padding: '5px 12px', background: '#E8EFF8', borderRadius: 14, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 16, color: '#1E4FA8', fontWeight: 'bold' }}>第 1 周</Text>
+                    </Box>
+                    <Box style={{ width: 2, height: 14, background: '#C9DDF6', marginTop: 8, marginLeft: 16 }} />
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1A2230', lineHeight: 1.4 }}>CLI + 配置合并</Text>
+                    <Text style={{ fontSize: 15, color: '#8B97A8', marginTop: 6, lineHeight: 1.45 }}>参数解析、YAML 合并、单次请求链路打通</Text>
+                </Box>
+
+                <Box style={{ width: 190, height: 176, flexDirection: 'column' }}>
+                    <Box style={{ padding: '5px 12px', background: '#E8EFF8', borderRadius: 14, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 16, color: '#1E4FA8', fontWeight: 'bold' }}>第 2 周</Text>
+                    </Box>
+                    <Box style={{ width: 2, height: 14, background: '#C9DDF6', marginTop: 8, marginLeft: 16 }} />
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1A2230', lineHeight: 1.4 }}>Worker Pool</Text>
+                    <Text style={{ fontSize: 15, color: '#8B97A8', marginTop: 6, lineHeight: 1.45 }}>并发调度、时长模式、优雅停止与进度条</Text>
+                </Box>
+
+                <Box style={{ width: 190, height: 176, flexDirection: 'column' }}>
+                    <Box style={{ padding: '5px 12px', background: '#E8EFF8', borderRadius: 14, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 16, color: '#1E4FA8', fontWeight: 'bold' }}>第 3 周</Text>
+                    </Box>
+                    <Box style={{ width: 2, height: 14, background: '#C9DDF6', marginTop: 8, marginLeft: 16 }} />
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1A2230', lineHeight: 1.4 }}>统计引擎</Text>
+                    <Text style={{ fontSize: 15, color: '#8B97A8', marginTop: 6, lineHeight: 1.45 }}>五档分位数、状态码分布、总字节数</Text>
+                </Box>
+
+                <Box style={{ width: 190, height: 176, flexDirection: 'column' }}>
+                    <Box style={{ padding: '5px 12px', background: '#DCE9F8', borderRadius: 14, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 16, color: '#1E4FA8', fontWeight: 'bold' }}>第 4 周</Text>
+                    </Box>
+                    <Box style={{ width: 2, height: 14, background: '#B8D2F2', marginTop: 8, marginLeft: 16 }} />
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1A2230', lineHeight: 1.4 }}>限流 + 数据集</Text>
+                    <Text style={{ fontSize: 15, color: '#8B97A8', marginTop: 6, lineHeight: 1.45 }}>令牌桶接入、请求参数随机化</Text>
+                </Box>
+
+                <Box style={{ width: 190, height: 176, flexDirection: 'column' }}>
+                    <Box style={{ padding: '5px 12px', background: '#E8EFF8', borderRadius: 14, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 16, color: '#1E4FA8', fontWeight: 'bold' }}>第 5 周</Text>
+                    </Box>
+                    <Box style={{ width: 2, height: 14, background: '#C9DDF6', marginTop: 8, marginLeft: 16 }} />
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1A2230', lineHeight: 1.4 }}>HTTP/2 + 导出</Text>
+                    <Text style={{ fontSize: 15, color: '#8B97A8', marginTop: 6, lineHeight: 1.45 }}>rustls、JSON 与 CSV 双出口</Text>
+                </Box>
+
+                <Box style={{ width: 190, height: 176, flexDirection: 'column' }}>
+                    <Box style={{ padding: '5px 12px', background: '#E8EFF8', borderRadius: 14, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 16, color: '#1E4FA8', fontWeight: 'bold' }}>第 6 周</Text>
+                    </Box>
+                    <Box style={{ width: 2, height: 14, background: '#C9DDF6', marginTop: 8, marginLeft: 16 }} />
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1A2230', lineHeight: 1.4 }}>测试与验证</Text>
+                    <Text style={{ fontSize: 15, color: '#8B97A8', marginTop: 6, lineHeight: 1.45 }}>25 个单测、基准编译、端到端冒烟</Text>
+                </Box>
+            </Box>
+
+            <Box style={{ width: 1200, height: 68, marginTop: 12, flexDirection: 'row', gap: 20 }}>
+                <Box style={{ width: 386, height: 68, background: '#F0F5FC', border: '1px solid #D6E4F5', borderRadius: 8, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <FAIcon name='plus' style={{ fill: '#3D7BD9', width: 14, height: 14 }} />
+                    <Text style={{ fontSize: 17, color: '#1E4FA8' }}>并发模型重构为 Semaphore + JoinSet</Text>
+                </Box>
+                <Box style={{ width: 386, height: 68, background: '#F0F5FC', border: '1px solid #D6E4F5', borderRadius: 8, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <FAIcon name='plus' style={{ fill: '#3D7BD9', width: 14, height: 14 }} />
+                    <Text style={{ fontSize: 17, color: '#1E4FA8' }}>criterion 微基准覆盖统计与限流</Text>
+                </Box>
+                <Box style={{ width: 386, height: 68, background: '#F0F5FC', border: '1px solid #D6E4F5', borderRadius: 8, padding: '0 16px', flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                    <FAIcon name='plus' style={{ fill: '#3D7BD9', width: 14, height: 14 }} />
+                    <Text style={{ fontSize: 17, color: '#1E4FA8' }}>--p99-threshold 与退出码 2</Text>
+                </Box>
+            </Box>
+        </Box>
+
+        {/* 下：四人分工 */}
+        <Box style={{ width: 1200, height: 202, marginTop: 24, flexDirection: 'row', gap: 20 }}>
+            <Box style={{ width: 285, height: 202, background: '#F7F9FC', border: '1px solid #C9DDF6', borderRadius: 12, padding: 18, flexDirection: 'column' }}>
+                <Box style={{ width: 30, height: 30, borderRadius: 6, background: '#1E4FA8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#FFFFFF' }}>A</Text>
+                </Box>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A2230', marginTop: 8 }}>并发编排与集成</Text>
+                <Text style={{ fontSize: 15, color: '#3D7BD9', marginTop: 6, lineHeight: 1.4 }}>worker.rs · main.rs</Text>
+                <Text style={{ fontSize: 15, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>调度模型、令牌桶接入、整体集成与 CI 阈值</Text>
+            </Box>
+
+            <Box style={{ width: 285, height: 202, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 18, flexDirection: 'column' }}>
+                <Box style={{ width: 30, height: 30, borderRadius: 6, background: '#E8EFF8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1E4FA8' }}>B</Text>
+                </Box>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A2230', marginTop: 8 }}>HTTP 客户端</Text>
+                <Text style={{ fontSize: 15, color: '#3D7BD9', marginTop: 6, lineHeight: 1.4 }}>http_client.rs</Text>
+                <Text style={{ fontSize: 15, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>协议与 TLS、连接池、超时与失败重试</Text>
+            </Box>
+
+            <Box style={{ width: 285, height: 202, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 18, flexDirection: 'column' }}>
+                <Box style={{ width: 30, height: 30, borderRadius: 6, background: '#E8EFF8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1E4FA8' }}>C</Text>
+                </Box>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A2230', marginTop: 8 }}>统计与导出</Text>
+                <Text style={{ fontSize: 15, color: '#3D7BD9', marginTop: 6, lineHeight: 1.4 }}>stats.rs · reporter.rs</Text>
+                <Text style={{ fontSize: 15, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>延迟分布统计、三态导出、错误 TopN</Text>
+            </Box>
+
+            <Box style={{ width: 285, height: 202, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 18, flexDirection: 'column' }}>
+                <Box style={{ width: 30, height: 30, borderRadius: 6, background: '#E8EFF8', justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#1E4FA8' }}>D</Text>
+                </Box>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A2230', marginTop: 8 }}>参数与数据</Text>
+                <Text style={{ fontSize: 15, color: '#3D7BD9', marginTop: 6, lineHeight: 1.4 }}>cli.rs · config.rs · dataset.rs</Text>
+                <Text style={{ fontSize: 15, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>参数定义、配置三层合并、数据集随机化</Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>17 / 18</Text>
+    </Box>
+</Slide>

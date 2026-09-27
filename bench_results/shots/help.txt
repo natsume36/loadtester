@@ -1,0 +1,68 @@
+支持同步/异步请求、HTTP/1.1 与 HTTP/2、HTTPS、多并发、QPS 令牌桶限流、数据集驱动随机化，并输出 p50/p95/p99、QPS、错误率（console/json/csv）
+
+Usage: loadtester.exe [OPTIONS] [URL]
+
+Arguments:
+  [URL]
+          压测目标 URL（也可在配置文件中通过 url 字段提供；两者都缺失则报错）
+
+Options:
+  -C, --concurrency <N>
+          并发数（Worker Pool 的大小，默认 1）
+
+  -n, --requests <REQUESTS>
+          总请求数（与 --duration 二选一；都不填则默认打满 10000 个请求）
+
+      --duration <DURATION>
+          压测时长（秒）
+
+  -X, --method <METHOD>
+          HTTP 方法（默认 GET；GET/POST/PUT/DELETE/…，支持自定义方法）
+
+  -d, --data <DATA>
+          请求体（字面字符串，或 "@文件路径"）
+
+  -H, --header <HEADER>
+          自定义请求头，格式 "Key: Value"；可重复传入多个（如 -H "Authorization: Bearer x" -H "Content-Type: application/json"）
+
+      --protocol <VERSION>
+          协议版本（默认 http/1.1）：http/1.1 | http/2
+
+      --timeout <SECS>
+          单请求超时秒数（默认 30）
+
+      --retries <N>
+          网络失败/超时后的重试次数（默认 0，即不重试）
+
+      --keepalive <SECS>
+          TCP/空闲连接保活秒数（默认 30）
+
+      --qps <QPS>
+          QPS 限流（令牌桶），不填则不限流
+
+      --dataset <DATASET>
+          数据集 JSON 文件；每条记录可覆盖本次请求的 method/url/headers/body
+
+      --insecure
+          跳过 TLS 证书校验（自签名/内网测试用）——B 角色新增
+
+      --cacert <CACERT>
+          自定义根证书 PEM 文件路径（B 角色新增）
+
+      --format <FORMAT>
+          输出格式（默认 console）：console | json | csv
+
+  -o, --output <OUTPUT>
+          输出文件路径（json/csv 时必填）
+
+  -c, --config <CONFIG>
+          YAML 配置文件路径；CLI 显式参数优先
+
+      --p99-threshold <MS>
+          p99 延迟阈值（毫秒）；超阈值时进程以退出码 2 退出，便于 CI 流水线判断
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version

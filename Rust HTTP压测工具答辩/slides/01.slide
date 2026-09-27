@@ -1,0 +1,57 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', position: 'relative', fontFamily: 'Microsoft YaHei' }}>
+    {/* 顶部深蓝细条 */}
+    <Box style={{ position: 'absolute', top: 0, left: 0, width: 1280, height: 8, background: '#1E4FA8' }} />
+
+    {/* 右侧延迟分布主视觉（装饰性结构图，atmosphere） */}
+    <Box style={{ position: 'absolute', left: 850, top: 132, width: 380, height: 348 }}>
+        <svg width={380} height={348} viewBox='0 0 380 348'>
+            <rect x='0' y='244' width='24' height='66' fill='#E8EFF8' />
+            <rect x='32' y='189' width='24' height='121' fill='#E8EFF8' />
+            <rect x='64' y='123' width='24' height='187' fill='#DCE9F8' />
+            <rect x='96' y='68' width='24' height='242' fill='#C9DDF6' />
+            <rect x='128' y='35' width='24' height='275' fill='#C9DDF6' />
+            <rect x='160' y='15' width='24' height='295' fill='#3D7BD9' />
+            <rect x='192' y='35' width='24' height='275' fill='#C9DDF6' />
+            <rect x='224' y='90' width='24' height='220' fill='#DCE9F8' />
+            <rect x='256' y='156' width='24' height='154' fill='#E8EFF8' />
+            <rect x='288' y='211' width='24' height='99' fill='#E8EFF8' />
+            <rect x='320' y='255' width='24' height='55' fill='#E8EFF8' />
+            <line x1='0' y1='310' x2='344' y2='310' stroke='#1E4FA8' strokeWidth='2' />
+            <line x1='0' y1='330' x2='344' y2='330' stroke='#D6DCE5' strokeWidth='1' />
+        </svg>
+    </Box>
+
+    {/* 主标题区 */}
+    <Box style={{ position: 'absolute', left: 96, top: 118, width: 740, flexDirection: 'column' }}>
+        <Text style={{ fontSize: 15, letterSpacing: 4, color: '#3D7BD9', fontWeight: 'bold' }}>实训项目答辩 · 2026</Text>
+        <Box style={{ width: 76, height: 4, background: '#1E4FA8', marginTop: 18, borderRadius: 2 }} />
+        <Text style={{ fontSize: 74, fontWeight: 'bold', color: '#0E3F8C', marginTop: 32, lineHeight: 1.14 }}>Rust HTTP 压测工具</Text>
+        <Text style={{ fontSize: 34, color: '#1E4FA8', marginTop: 20, fontWeight: '600' }}>高并发性能测试工具的设计与实现</Text>
+        <Text style={{ fontSize: 26, color: '#4A5568', marginTop: 24, fontFamily: 'Times New Roman', fontWeight: 'bold', lineHeight: 1.45 }}>Design and Implementation of a High-Concurrency HTTP Load Testing Tool in Rust</Text>
+    </Box>
+
+    {/* 技术关键词 */}
+    <Box style={{ position: 'absolute', left: 96, top: 468, width: 740, flexDirection: 'row', gap: 12 }}>
+        <Box style={{ padding: '8px 18px', borderRadius: 18, background: '#F0F5FC', border: '1px solid #D6E4F5' }}>
+            <Text style={{ fontSize: 17, color: '#1E4FA8' }}>Rust / Tokio</Text>
+        </Box>
+        <Box style={{ padding: '8px 18px', borderRadius: 18, background: '#F0F5FC', border: '1px solid #D6E4F5' }}>
+            <Text style={{ fontSize: 17, color: '#1E4FA8' }}>精准 QPS 限流</Text>
+        </Box>
+        <Box style={{ padding: '8px 18px', borderRadius: 18, background: '#F0F5FC', border: '1px solid #D6E4F5' }}>
+            <Text style={{ fontSize: 17, color: '#1E4FA8' }}>纳秒级延迟统计</Text>
+        </Box>
+    </Box>
+
+    {/* 底部信息条 */}
+    <Box style={{ position: 'absolute', left: 0, top: 566, width: 1280, height: 154, background: '#F7F9FC', borderTop: '3px solid #1E4FA8', padding: '34px 96px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box style={{ flexDirection: 'column' }}>
+            <Text style={{ fontSize: 21, color: '#1A2230' }}>汇报人：＿＿＿＿＿　　指导老师：＿＿＿＿＿</Text>
+            <Text style={{ fontSize: 18, color: '#8B97A8', marginTop: 14 }}>＿＿＿＿＿＿学院　·　计算机科学与技术</Text>
+        </Box>
+        <Box style={{ flexDirection: 'column', alignItems: 'flex-end' }}>
+            <Text style={{ fontSize: 21, color: '#1A2230' }}>2026 年 9 月</Text>
+            <Text style={{ fontSize: 18, color: '#8B97A8', marginTop: 14 }}>4 人团队　·　6 周开发</Text>
+        </Box>
+    </Box>
+</Slide>

@@ -1,0 +1,113 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>八个依赖，八次取舍</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>01 / 选题背景与技术选型</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'row', gap: 28 }}>
+
+        {/* 左：选型三原则 */}
+        <Box style={{ width: 384, height: 532, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 12, padding: 22, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#0E3F8C' }}>选型三原则</Text>
+            <Box style={{ width: 48, height: 3, background: '#1E4FA8', marginTop: 14 }} />
+
+            <Box style={{ flexDirection: 'column', gap: 18, marginTop: 22 }}>
+                <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start' }}>
+                    <Box style={{ width: 26, height: 26, borderRadius: 6, background: '#1E4FA8', justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>1</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'column', flex: 1 }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1A2230' }}>纯 Rust 优先</Text>
+                        <Text style={{ fontSize: 17, color: '#4A5568', marginTop: 5, lineHeight: 1.5 }}>能不用原生依赖就不用：rustls 替换 OpenSSL，交付物不挑机器</Text>
+                    </Box>
+                </Box>
+
+                <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start' }}>
+                    <Box style={{ width: 26, height: 26, borderRadius: 6, background: '#1E4FA8', justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>2</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'column', flex: 1 }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1A2230' }}>热路径上不出现锁竞争</Text>
+                        <Text style={{ fontSize: 17, color: '#4A5568', marginTop: 5, lineHeight: 1.5 }}>总量与字节数走原子计数，直方图写入只做一次短临界区</Text>
+                    </Box>
+                </Box>
+
+                <Box style={{ flexDirection: 'row', gap: 12, alignItems: 'flex-start' }}>
+                    <Box style={{ width: 26, height: 26, borderRadius: 6, background: '#1E4FA8', justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#FFFFFF' }}>3</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'column', flex: 1 }}>
+                        <Text style={{ fontSize: 19, fontWeight: 'bold', color: '#1A2230' }}>构建配置也属于设计</Text>
+                        <Text style={{ fontSize: 17, color: '#4A5568', marginTop: 5, lineHeight: 1.5 }}>release 开 LTO + opt-level 3；dev 用 opt-level 1 换编译速度</Text>
+                    </Box>
+                </Box>
+            </Box>
+
+            <Box style={{ marginTop: 24, padding: '14px 16px', background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 8 }}>
+                <Text style={{ fontSize: 17, color: '#4A5568', lineHeight: 1.5 }}>全部依赖均为纯 Rust 实现或静态链接 —— 交付物没有外部运行时依赖</Text>
+            </Box>
+        </Box>
+
+        {/* 右：依赖矩阵 */}
+        <Box style={{ width: 788, height: 532, flexDirection: 'column' }}>
+            <Table
+                style={{ width: 788, height: 430 }}
+                defaultTextStyle={{ fontSize: 17, textAlign: 'left', color: '#4A5568' }}
+                defaultCellStyle={{
+                    border: {
+                        left: { width: 1, color: '#E5E7EB' },
+                        right: { width: 1, color: '#E5E7EB' },
+                        top: { width: 1, color: '#E5E7EB' },
+                        bottom: { width: 1, color: '#E5E7EB' },
+                    },
+                }}
+                cells={[
+                    [
+                        { text: '能力域', textStyle: { bold: true, color: '#FFFFFF', fontSize: 18 }, cellStyle: { background: { color: '#0E3F8C' } } },
+                        { text: '依赖与版本', textStyle: { bold: true, color: '#FFFFFF', fontSize: 18 }, cellStyle: { background: { color: '#0E3F8C' } } },
+                        { text: '选型理由', textStyle: { bold: true, color: '#FFFFFF', fontSize: 18 }, cellStyle: { background: { color: '#0E3F8C' } } },
+                    ],
+                    [
+                        { text: '异步与 HTTP', textStyle: { bold: true, color: '#1A2230' } },
+                        'Tokio 1.40（full）+ reqwest 0.12',
+                        '多线程工作窃取调度，时间 / 信号 / 同步原语一次到位；reqwest 关闭默认特性改走 rustls',
+                    ],
+                    [
+                        { text: 'TLS 与协议', textStyle: { bold: true, color: '#1A2230' }, cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: 'rustls + hyper 1.0', cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: '纯 Rust 实现、静态链接，无外部动态库；hyper 显式声明以便直接使用其类型做协议适配', cellStyle: { background: { color: '#F7F9FC' } } },
+                    ],
+                    [
+                        { text: '命令行', textStyle: { bold: true, color: '#1A2230' } },
+                        'clap 4.5（derive）',
+                        '声明式定义，帮助信息、默认值与参数校验都由宏生成，减少手写样板',
+                    ],
+                    [
+                        { text: '延迟统计', textStyle: { bold: true, color: '#1A2230' }, cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: 'HdrHistogram 7.5', cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: '纳秒精度分位数，单条记录开销低、内存可控，适合放在请求热路径上', cellStyle: { background: { color: '#F7F9FC' } } },
+                    ],
+                    [
+                        { text: '数据与配置', textStyle: { bold: true, color: '#1A2230' } },
+                        'serde 1.0 + serde_json + serde_yaml 0.9',
+                        'JSON 数据集、YAML 配置、结果导出共用同一套派生宏，字段定义只写一次',
+                    ],
+                    [
+                        { text: '交互与验证', textStyle: { bold: true, color: '#1A2230' }, cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: 'indicatif 0.17 + criterion 0.5', cellStyle: { background: { color: '#F7F9FC' } } },
+                        { text: '压测过程实时反馈进度与速率；criterion 生成可视化基准报告，仅作 dev-dependency', cellStyle: { background: { color: '#F7F9FC' } } },
+                    ],
+                ]}
+            />
+            <Text style={{ fontSize: 17, color: '#8B97A8', marginTop: 16 }}>另有 rand 0.8（数据集随机抽取）、csv 1.3（结果导出）、anyhow 1.0（统一错误类型）</Text>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>05 / 18</Text>
+    </Box>
+</Slide>

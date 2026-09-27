@@ -1,0 +1,46 @@
+# loadtester 配置样例（所有字段均可选）
+# 用法: loadtester -c config.yaml
+# 优先级: 命令行显式参数 > 本文件 > 程序内置默认值
+
+# ---- 目标与请求 ----
+url: "https://example.com"
+method: "GET"                 # 默认 GET
+
+# 请求体：直接写字面字符串，或用 "@路径" 从文件读取（字段名也可写作 body）
+# data: '{"k":1}'
+# data: "@body.json"
+
+# 自定义请求头（与命令行 -H 格式一致，可写多条；同名头命令行优先）
+# headers:
+#   - "Authorization: Bearer token123"
+#   - "Content-Type: application/json"
+
+# ---- 压测强度 ----
+concurrency: 8                # 并发 worker 数，默认 1
+
+# 结束条件二选一：按总请求数，或按时长（秒）
+requests: 10000
+# duration: 30
+
+# QPS 限流（不填则不限流）
+# qps: 1000
+
+# ---- 协议与连接 ----
+protocol: "http/1.1"          # http/1.1 | http/2，默认 http/1.1
+timeout_secs: 30              # 单请求超时（秒），默认 30
+max_retries: 0                # 网络失败重试次数，默认 0（不重试）
+keepalive_secs: 30            # TCP/空闲连接保活（秒），默认 30
+
+# ---- TLS（自签名/内网测试）----
+insecure: false               # true = 跳过证书校验，默认 false
+# cacert: "./ca.pem"          # 自定义根证书 PEM 路径
+
+# ---- 数据集随机化 ----
+# dataset: "./dataset_mixed.json"
+
+# ---- 输出 ----
+format: "console"             # console | json | csv，默认 console
+# output: "./report.json"
+
+# ---- CI 阈值 ----
+# p99_threshold_ms: 500       # p99 超阈值（毫秒）时进程以退出码 2 退出（CI 信号）

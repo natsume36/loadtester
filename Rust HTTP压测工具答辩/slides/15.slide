@@ -1,0 +1,78 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>25 个单测 + 一条退出码规则</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>03 / 基准测试与验证</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'row', gap: 26 }}>
+
+        {/* 左：三层验证链路 */}
+        <Box style={{ width: 740, height: 532, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <FAIcon name='shield' style={{ fill: '#1E4FA8', width: 22, height: 22 }} />
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>三层验证链路</Text>
+            </Box>
+            <svg width={700} height={430} viewBox='0 0 700 430' style={{ marginTop: 12 }}>
+                <rect x='0' y='0' width='700' height='116' rx='10' fill='#FFFFFF' stroke='#D6DCE5' strokeWidth='1' />
+                <text x='24' y='36' fontSize='19' fill='#0E3F8C'>① 单元测试 · cargo test</text>
+                <text x='24' y='66' fontSize='16' fill='#4A5568'>覆盖 POST 报文送达、自定义请求头、YAML 合并优先级</text>
+                <text x='24' y='90' fontSize='16' fill='#4A5568'>状态码分布、纳秒分位数单调性、Semaphore 上限、空统计兜底</text>
+                <line x1='576' y1='20' x2='576' y2='96' stroke='#E5E7EB' strokeWidth='1' />
+                <text x='600' y='64' fontSize='26' fill='#1E4FA8'>25/25</text>
+                <text x='600' y='88' fontSize='14' fill='#8B97A8'>单测通过</text>
+
+                <rect x='0' y='136' width='700' height='116' rx='10' fill='#FFFFFF' stroke='#D6DCE5' strokeWidth='1' />
+                <text x='24' y='172' fontSize='19' fill='#0E3F8C'>② 基准测试 · cargo bench</text>
+                <text x='24' y='202' fontSize='16' fill='#4A5568'>两个 bench 目标直接调用 lib target 里的真实实现</text>
+                <text x='24' y='226' fontSize='16' fill='#4A5568'>cargo bench --no-run 已通过编译验证，可作回归基线</text>
+                <line x1='576' y1='156' x2='576' y2='232' stroke='#E5E7EB' strokeWidth='1' />
+                <text x='600' y='200' fontSize='26' fill='#1E4FA8'>4 档</text>
+                <text x='600' y='224' fontSize='14' fill='#8B97A8'>QPS 覆盖</text>
+
+                <rect x='0' y='272' width='700' height='116' rx='10' fill='#F0F5FC' stroke='#D6E4F5' strokeWidth='1' />
+                <text x='24' y='308' fontSize='19' fill='#0E3F8C'>③ 流水线守门 · --p99-threshold</text>
+                <text x='24' y='338' fontSize='16' fill='#4A5568'>p99 超阈值即以退出码 2 结束，交给流水线自动判断</text>
+                <text x='24' y='362' fontSize='16' fill='#4A5568'>命令行与 YAML 三层合并，命令行显式参数优先</text>
+                <line x1='576' y1='292' x2='576' y2='368' stroke='#D6E4F5' strokeWidth='1' />
+                <text x='600' y='336' fontSize='26' fill='#D9534F'>2</text>
+                <text x='600' y='360' fontSize='14' fill='#8B97A8'>不达标退出码</text>
+
+                <text x='350' y='414' textAnchor='middle' fontSize='18' fill='#4A5568'>三层各管一件事：行为对不对、开销大不大、底线守不守得住</text>
+            </svg>
+        </Box>
+
+        {/* 右：边界测试与基线价值 */}
+        <Box style={{ width: 434, height: 532, flexDirection: 'column', gap: 20 }}>
+            <Box style={{ width: 434, height: 300, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>不能只测顺利路径</Text>
+                <Box style={{ flexDirection: 'column', gap: 12, marginTop: 14 }}>
+                    <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                        <FAIcon name='exclamation-circle' style={{ fill: '#3D7BD9', width: 15, height: 15 }} />
+                        <Text style={{ fontSize: 17, color: '#4A5568', lineHeight: 1.5 }}>非法方法与不可达端口 → 重试次数与错误信息都符合预期</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                        <FAIcon name='exclamation-circle' style={{ fill: '#3D7BD9', width: 15, height: 15 }} />
+                        <Text style={{ fontSize: 17, color: '#4A5568', lineHeight: 1.5 }}>空统计 → summarize 不 panic，各档分位数安全返回 0</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+                        <FAIcon name='exclamation-circle' style={{ fill: '#3D7BD9', width: 15, height: 15 }} />
+                        <Text style={{ fontSize: 17, color: '#4A5568', lineHeight: 1.5 }}>并发上限 → in-flight 峰值既不越过 permits，也不欠用</Text>
+                    </Box>
+                </Box>
+            </Box>
+
+            <Box style={{ width: 434, height: 212, background: '#F0F5FC', border: '1px solid #D6E4F5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E4FA8' }}>为什么基准也要进仓库</Text>
+                <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 12, lineHeight: 1.55 }}>微基准和单测一样是代码资产。以后再动并发模型或换掉限流实现时，49.33 ns 与 11.9% 这两个基线会立刻告诉你有没有变慢。</Text>
+            </Box>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>15 / 18</Text>
+    </Box>
+</Slide>

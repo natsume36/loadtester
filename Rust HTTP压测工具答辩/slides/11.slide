@@ -1,0 +1,87 @@
+<Slide style={{ width: 1280, height: 720, background: '#FFFFFF', flexDirection: 'column', fontFamily: 'Microsoft YaHei' }}>
+    {/* A3 页眉 */}
+    <Box style={{ width: 1280, height: 80, background: '#0E3F8C', padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text style={{ fontSize: 32, fontWeight: 'bold', color: '#FFFFFF' }}>不止能压，还要能进流水线</Text>
+        <Text style={{ fontSize: 16, color: '#A8C4E8' }}>02 / 系统架构与核心实现</Text>
+    </Box>
+
+    {/* C 内容区 */}
+    <Box style={{ width: 1280, height: 580, padding: '24px 40px', flexDirection: 'row', gap: 26 }}>
+
+        {/* 左：配置优先级栈 */}
+        <Box style={{ width: 340, height: 532, background: '#F7F9FC', border: '1px solid #D6DCE5', borderRadius: 12, padding: 22, flexDirection: 'column' }}>
+            <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>配置的三个来源</Text>
+            <Box style={{ width: 44, height: 3, background: '#1E4FA8', marginTop: 14 }} />
+
+            <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 18 }}>
+                <FAIcon name='arrow-down' style={{ fill: '#8B97A8', width: 14, height: 14 }} />
+                <Text style={{ fontSize: 17, color: '#8B97A8' }}>优先级由高到低</Text>
+            </Box>
+
+            <Box style={{ flexDirection: 'column', gap: 10, marginTop: 12 }}>
+                <Box style={{ height: 64, background: '#1E4FA8', borderRadius: 8, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>CLI 显式参数</Text>
+                    <Text style={{ fontSize: 15, color: '#C9DDF6', marginTop: 4 }}>最高优先</Text>
+                </Box>
+                <Box style={{ height: 64, background: '#DCE9F8', borderRadius: 8, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E4FA8' }}>YAML 配置文件</Text>
+                    <Text style={{ fontSize: 15, color: '#4A5568', marginTop: 4 }}>命令行没写时生效</Text>
+                </Box>
+                <Box style={{ height: 64, background: '#E8EFF8', borderRadius: 8, padding: '0 16px', flexDirection: 'column', justifyContent: 'center' }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#4A5568' }}>程序内置默认值</Text>
+                    <Text style={{ fontSize: 15, color: '#8B97A8', marginTop: 4 }}>兜底</Text>
+                </Box>
+            </Box>
+
+            <Box style={{ marginTop: 22, padding: '14px 16px', background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 8 }}>
+                <Text style={{ fontSize: 17, color: '#4A5568', lineHeight: 1.5 }}>请求头按「YAML 在前、CLI 在后」合并，同名头以 CLI 为准，且大小写不敏感</Text>
+            </Box>
+        </Box>
+
+        {/* 右：能力卡 + 用法示例 */}
+        <Box style={{ width: 834, height: 532, flexDirection: 'column' }}>
+            <Box style={{ flexDirection: 'row', gap: 20, height: 228 }}>
+                <Box style={{ width: 407, height: 228, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>数据集驱动随机化</Text>
+                    <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 12, lineHeight: 1.55 }}>每次请求随机取一条 JSON 记录，可覆盖 method / url / headers / body；未写的字段回落到全局值。</Text>
+                    <Box style={{ marginTop: 12, padding: '7px 14px', background: '#E8EFF8', borderRadius: 16, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 16, color: '#1E4FA8' }}>避免缓存预热造成的性能假象</Text>
+                    </Box>
+                </Box>
+
+                <Box style={{ width: 407, height: 228, background: '#F7F9FC', border: '1px solid #C9DDF6', borderRadius: 12, padding: 20, flexDirection: 'column' }}>
+                    <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#0E3F8C' }}>导出与流水线</Text>
+                    <Text style={{ fontSize: 18, color: '#4A5568', marginTop: 12, lineHeight: 1.55 }}>console 直接读；JSON 含汇总、错误 TopN 与每条样本；CSV 一行为汇总，便于入库分析。</Text>
+                    <Box style={{ marginTop: 12, padding: '7px 14px', background: '#DCE9F8', borderRadius: 16, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 16, color: '#1E4FA8' }}>p99 超阈值 → 退出码 2</Text>
+                    </Box>
+                </Box>
+            </Box>
+
+            <Box style={{ width: 834, height: 284, marginTop: 20, background: '#FFFFFF', border: '1px solid #D6DCE5', borderRadius: 12, padding: 16, justifyContent: 'center' }}>
+                <CodeBlock
+                    code={`# 50 并发 · 200 QPS · 持续 5 秒，带自定义请求头与数据集
+loadtester http://127.0.0.1:8080/ -C 50 --duration 5 --qps 200 \\
+  -H "Authorization: Bearer token123" --dataset data.json
+
+# 导出 JSON；p99 超 500 ms 时以退出码 2 结束（CI 信号）
+loadtester https://example.com -n 200 --format json -o report.json \\
+  --p99-threshold 500
+
+# 命令行没写的参数才回落 YAML
+loadtester -c config.yaml.example -C 16`}
+                    language='bash'
+                    width={800}
+                    fontSize={14}
+                    theme='github-light'
+                />
+            </Box>
+        </Box>
+    </Box>
+
+    {/* D 页脚 */}
+    <Box style={{ width: 1280, height: 60, padding: '0 40px', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #E5E7EB' }}>
+        <Text style={{ fontSize: 14, color: '#8B97A8' }}>Rust HTTP 压测工具 · 项目答辩</Text>
+        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#1E4FA8' }}>11 / 18</Text>
+    </Box>
+</Slide>
